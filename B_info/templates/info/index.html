@@ -1,0 +1,71 @@
+{% extends 'info/base.html' %}
+{% block content %}
+<div class="container">
+   
+    <div class="row">
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+        <div class="col-md-10 col-xs-10 col-sm-10">
+            <h2 class="round3" style="color: rgb(18, 14, 235);text-align:center; ">Business Information Dashboard</h2>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-10 col-xs-10 col-sm-10"></div>
+        <div class="col-md-2 col-xs-1 col-sm-1">
+            <br />
+            <a href="{% url 'create' %}">
+                <h4>
+                    <a href="{% url 'create' %}" class="badge badge-success">Add New</a>
+                </h4>
+            </a>
+        </div>
+    </div>
+    <br />
+   
+    {% for contact in business_list %}
+    <div class="row justify-content-md-center" style="background-color: rgb(113, 219, 178);">
+        
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+        <div class="col-md-7 col-xs-7 col-sm-7">
+            <ul class="list-group">
+
+                <li class="list-group-item " style="background-color: rgb(37, 179, 119);">
+                    <a style="font-size: x-large; font-weight: bold;  color: rgb(19, 17, 17); " href="{% url 'detail' contact.pk %}"> {{ contact.pk }}.{{ contact.B_name }} </a> 
+                   <!--<p align="right">{{contact.createdAt}}</p> --> 
+                </li>
+            </ul>
+            <br>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1">
+            <div class="col-md-7 col-xs-7 col-sm-7">
+                <h4>
+                <a href="{% url 'detail' contact.pk %}" class="badge badge-dark">Info</a>
+            </h4>
+            </div>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1">
+            <div class="col-md-7 col-xs-7 col-sm-7">
+                <h4>
+                <a href="{% url 'edit' contact.pk %}" class="badge badge-primary ">Edit</a>
+            </h4>
+             </div>
+
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1">
+            <div class="col-md-7 col-xs-7 col-sm-7">
+                <h4>
+                <a href="{% url 'delete' contact.pk %}" class="badge badge-danger">Delete</a>
+            </h4>
+            </div>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+    
+    </div>
+
+    <br>
+
+    {% endfor %}
+    
+</div>
+{% endblock %}
